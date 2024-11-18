@@ -9,7 +9,7 @@ import br.com.grupo.trabalho.Professor;
 
 public class GerenciadorDeAula {
 
-    // Instância única do Singleton
+
     private static GerenciadorDeAula instancia;
 
     // Listas para armazenar dados do sistema
