@@ -7,7 +7,6 @@ import java.util.Scanner;
 import br.com.grupo.trabalho.Aluno;
 import br.com.grupo.trabalho.Professor;
 import br.com.grupo.trabalho.fact.*;
-import br.com.grupo.trabalho.single.GerenciadorDeAula;
 import br.com.grupo.trabalho.obser.*;
 
 public class Main {
