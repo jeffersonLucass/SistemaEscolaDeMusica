@@ -1,15 +1,17 @@
+
 package br.com.grupo.trabalho;
 
 import java.time.LocalTime;
 import java.util.Objects;
 
 import br.com.grupo.trabalho.fact.IniciarCurso;
+import br.com.grupo.trabalho.obser.Sujeito;
 
-public abstract class Curso implements IniciarCurso {
+public abstract class Curso extends Sujeito implements IniciarCurso {
 	private String nome;
 	private String diaAula;
 	private LocalTime horarioAula;
-	
+
 	public Curso(String nome, String diaAula, int hora, int minuto, int segundo) {
 		super();
 		this.nome = nome;
@@ -34,8 +36,9 @@ public abstract class Curso implements IniciarCurso {
 
 	@Override
 	public boolean setDiaAula(String diaAula) {
-		if((diaAula == null) || (Objects.equals(diaAula, "Segunda-feira")) || (Objects.equals(diaAula, "Terça-feira")) || (Objects.equals(diaAula, "Quarta-feira")) || (Objects.equals(diaAula, "Quinta-feira")) || (Objects.equals(diaAula, "Sexta-feira")) || (Objects.equals(diaAula, "Sábado")) || (Objects.equals(diaAula, "Domingo"))) {
+		if (diaAula == null || diaAula.matches("(Segunda-feira|Terça-feira|Quarta-feira|Quinta-feira|Sexta-feira|Sábado|Domingo)")) {
 			this.diaAula = diaAula;
+			notifyObservers("Dia da aula alterado para: " + diaAula);
 			return true;
 		} else {
 			System.out.println("Dia da semana inválido.");
@@ -50,16 +53,13 @@ public abstract class Curso implements IniciarCurso {
 
 	@Override
 	public boolean setHorarioAula(int hora, int minuto, int segundo) {
-		if((hora < 0) || (hora > 23) || (minuto < 0) || (minuto > 59) || (segundo < 0) || (segundo > 59)) {
+		if (hora < 0 || hora > 23 || minuto < 0 || minuto > 59 || segundo < 0 || segundo > 59) {
 			System.out.println("Horário inválido.");
 			return false;
 		} else {
 			this.horarioAula = LocalTime.of(hora, minuto, segundo);
+			notifyObservers("Horário da aula alterado para: " + horarioAula);
 			return true;
 		}
-	}
-	
-	public void exibirInfomacoes() {
-		
 	}
 }
