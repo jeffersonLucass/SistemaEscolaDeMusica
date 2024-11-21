@@ -39,28 +39,33 @@ public class Main {
 				op = alunos[i].inscreverCurso();
 				switch(op) {
 					case 1:
-						if(contC == 0) {
+						if (contC == 0) {
 							totalProf++;
 							professores[totalProf] = new Professor("Beatriz", 35, "Taguatinga", "Canto");
 							cursos[totalProf] = cursoFactory.criarCurso(1, null, 00, 00, 00);
 							contC++;
 						}
+						professores[0].adicionarAlunoInscrito(alunos[i], "Canto"); // Inscreve aluno no curso de Canto
 						break;
+
 					case 2:
-						if(contTM == 0) {
+						if (contTM == 0) {
 							totalProf++;
 							professores[totalProf] = new Professor("Hially", 35, "Taguatinga", "Teoria Musical");
 							cursos[totalProf] = cursoFactory.criarCurso(2, null, 00, 00, 00);
 							contTM++;
 						}
+						professores[1].adicionarAlunoInscrito(alunos[i], "Teoria Musical"); // Inscreve aluno no curso de Teoria Musical
 						break;
+
 					case 3:
-						if(contP == 0) {
+						if (contP == 0) {
 							totalProf++;
 							professores[totalProf] = new Professor("Júlio", 35, "Taguatinga", "Piano");
 							cursos[totalProf] = cursoFactory.criarCurso(3, null, 00, 00, 00);
 							contP++;
 						}
+						professores[2].adicionarAlunoInscrito(alunos[i], "Piano"); // Inscreve aluno no curso de Piano
 						break;
 				}
 				if(cursos[totalProf] != null) {

@@ -1,5 +1,7 @@
 package br.com.grupo.trabalho;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import br.com.grupo.trabalho.fact.IniciarCurso;
@@ -8,6 +10,7 @@ import br.com.grupo.trabalho.obser.Observer;
 
 public class Professor extends Pessoa implements Observer, Agendavel {
 	Scanner scanner = new Scanner(System.in);
+	private List<Observer> alunosInscritos = new ArrayList<>();
 
 	private String cursoLecionado;
 
@@ -20,6 +23,20 @@ public class Professor extends Pessoa implements Observer, Agendavel {
 	public void update(String mensagem) {
 		System.out.println(getNome() + " foi notificado pois: " + mensagem);
 	}
+
+	public void adicionarAlunoInscrito(Observer aluno, String curso) {
+		if (cursoLecionado.equalsIgnoreCase(curso) && !alunosInscritos.contains(aluno)) {
+			alunosInscritos.add(aluno);
+		}
+	}
+
+	public void notificarObservers(String mensagem) {
+		for (Observer aluno : alunosInscritos) {
+			aluno.update(mensagem);
+		}
+	}
+
+
 
 	public String getCursoLecionado() {
 		return cursoLecionado;
