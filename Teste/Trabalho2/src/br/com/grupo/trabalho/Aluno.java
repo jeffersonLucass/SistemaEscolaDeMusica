@@ -20,11 +20,8 @@ public class Aluno extends Pessoa implements Observer, Agendavel {
 
 	@Override
 	public void update(String mensagem) {
-		if (mensagem.contains(cursoInscrito)) {
-			System.out.println(getNome() + " foi notificado pois: " + mensagem);
-		}
+		System.out.println(getNome() + " foi notificado pois: " + mensagem);
 	}
-
 
 	public int getMatricula() {
 		return matricula;

@@ -1,5 +1,6 @@
 package br.com.grupo.trabalho;
 
+import java.time.LocalTime;
 import java.util.Scanner;
 
 import br.com.grupo.trabalho.fact.IniciarCurso;
@@ -32,20 +33,13 @@ public class Professor extends Pessoa implements Observer, Agendavel {
 	@Override
 	public boolean agendarAula(IniciarCurso cursos) {
 		boolean validacao;
-		do {
-			System.out.print("\nInforme o dia da semana que deseja marcar a aula(Ex: Segunda-feira): ");
-			String diaAula = scanner.nextLine();
-			validacao = cursos.setDiaAula(diaAula);
-		} while(validacao == false);
-		do {
-			System.out.print("Informe o horário da aula(Ex: hh mm ss): ");
-			int hora = scanner.nextInt();
-			int minuto = scanner.nextInt();
-			int segundo = scanner.nextInt();
-			scanner.nextLine();
-			validacao = cursos.setHorarioAula(hora, minuto, segundo);
-		} while(validacao == false);
-		System.out.println("\nAula agendada com sucesso.");
+		LocalTime horarioTemp = LocalTime.of(00, 00, 00);
+		if(cursos.getHorarioAula().equals(horarioTemp)) {
+			validacao = false;
+		} else {
+			System.out.println("\nSua aula " + cursos.getDiaAula() + " às " + cursos.getHorarioAula() + "h foi agendada com sucesso.\n");
+			validacao = true;
+		}
 		return validacao;
 	}
 

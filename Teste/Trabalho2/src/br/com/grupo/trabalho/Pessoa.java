@@ -1,16 +1,19 @@
 package br.com.grupo.trabalho;
 
+//classe abstrata Pessoa
 public abstract class Pessoa {
+    //atributos privados para encapsulamento
     private String nome;
     private int idade;
     private String endereco;
 
+    //construtor da classe Pessoa
     public Pessoa(String nome, int idade, String endereco) {
         this.nome = nome;
         this.idade = idade;
         this.endereco = endereco;
     }
-
+    //métodos getters e setters
     public String getNome() {
         return nome;
     }
